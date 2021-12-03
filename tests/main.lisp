@@ -6,6 +6,44 @@
 
 ;; NOTE: To run this test file, execute `(asdf:test-system :rayden)' in your Lisp.
 
-(deftest test-target-1
-  (testing "should (= 1 1) to be true"
-    (ok (= 1 1))))
+(deftest test-drop
+    (testing
+     "drop function"
+     (ok (equal (drop 10 '())
+                '()))
+     (ok (equal (drop 0 '())
+                '()))
+     (ok (equal (drop 0 '(1))
+                '(1)))
+     (ok (equal (drop 3 (iota 10))
+                '(3 4 5 6 7 8 9)))
+     (ok (equal (drop -2 (iota 10))
+                (iota 10)))))
+
+(deftest test-take
+  (testing
+   "take testing"
+   (ok (equal (take 10 '())
+              '()))
+   (ok (equal (take 10 #())
+              '()))
+   (ok (equal (take 0 #())
+              '()))
+   (ok (equal (take 10 (iota 10))
+              '(0 1 2 3 4 5 6 7 8 9)))
+   (ok (equal (take 10 (apply #'vector (iota 10)))
+              '(0 1 2 3 4 5 6 7 8 9)))
+   (ok (equal (take 5 (iota 10))
+              '(0 1 2 3 4)))
+   (ok (equal (take 5 (apply #'vector (iota 10)))
+              '(0 1 2 3 4)))
+   (ok (equal (take -12 (iota 10))
+              '()))
+   (ok (equal (take -12 (apply #'vector (iota 10)))
+              '()))
+   (ok (equal (take 1 #*000)
+              '(0)))
+   (ok (equal (take 2 "str")
+              '(#\s #\t)))))
+
+       
