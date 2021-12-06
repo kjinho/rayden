@@ -19,7 +19,7 @@
 (defun take (n seq)
   "Returns a new list of the first n items of seq.
 If n is zero or negative, returns nil."
-  (typecase seq
+  (ctypecase seq
     (list
      (if (< n 1)
          nil
