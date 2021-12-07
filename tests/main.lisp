@@ -46,16 +46,29 @@
    (ok (equal (take 2 "str")
               '(#\s #\t)))))
 
+(deftest test-length=1
+  (testing
+   "length=1 testing"
+   (ok (length=1 '(test)))
+   (ok (length=1 '(1)))
+   (ng (length=1 nil))
+   (ok (length=1 '(nil)))
+   (ng (length=1 '(1 2 3)))
+   (ok (length=1 #(1)))
+   (ok (length=1 #(nil)))
+   (ng (length=1 #(1 2)))
+   (ng (length=1 #()))))
+       
 (deftest test-len=1
   (testing
    "len=1 testing"
    (ok (len=1 '(test)))
    (ok (len=1 '(1)))
    (ng (len=1 nil))
+   (ng (len=1 (cons 1 2)))
    (ok (len=1 '(nil)))
-   (ng (len=1 '(1 2 3)))
-   (ok (len=1 #(1)))
-   (ok (len=1 #(nil)))
-   (ng (len=1 #(1 2)))
-   (ng (len=1 #()))))
-       
+   (ng (len=1 '(1 2 3)))))
+   ;; (signal (length=1 #(1)))
+   ;; (signal (length=1 #(nil)))
+   ;; (signal (length=1 #(1 2)))
+   ;; (signal (length=1 #()))))
