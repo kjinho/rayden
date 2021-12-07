@@ -47,13 +47,17 @@ original list."
       list
       (drop (1- n) (cdr list))))
 
-(defmacro len=1 (seq)
+;; (defmacro len=1 (seq)
+;;   "Checks if the length of the list is one"
+;;   (let ((lst (gensym)))
+;;     `(let ((,lst ,seq))
+;;        (and (not (null ,lst))
+;;             (null (cdr ,lst))))))
+(defun len=1 (lst)
   "Checks if the length of the list is one"
-  (let ((lst (gensym)))
-    `(let ((,lst ,seq))
-       (and (not (null ,lst))
-            (null (cdr ,lst))))))
-  
+  (and (not (null lst))
+       (null (cdr lst))))
+
 ;; (declaim
 ;;  (ftype (function (sequence) boolean) length=1))
 (defun length=1 (seq)
