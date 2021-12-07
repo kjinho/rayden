@@ -8,7 +8,8 @@
    :iota
    :->
    :->>
-   :as->))
+   :as->
+   :len=1))
 (in-package :rayden)
 
 ;; blah blah blah.
@@ -31,11 +32,7 @@ If n is zero or negative, returns nil."
          nil
          (loop for i upto (1- n)
                for item across seq
-               collect item)))
-    (t ;; this will likely never be selected because vectors and lists
-       ;; account for all sequences
-     (error "Unknown sequence type `~a` for ~a" (type-of seq) seq))))
-
+               collect item)))))
 
 (declaim
  (ftype (function (fixnum list) list) drop))
@@ -48,3 +45,13 @@ original list."
           (null list))
       list
       (drop (1- n) (cdr list))))
+
+(declaim
+ (ftype (function (sequence) boolean) len=1))
+(defun len=1 (seq)
+  (ctypecase seq
+    (list
+     (and (not (null seq))
+          (null (cdr seq))))
+    (vector
+     (= 1 (length seq)))))
