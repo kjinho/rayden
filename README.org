@@ -38,7 +38,7 @@ After installing rove (~ros install rove~), execute the following command:
 rove rayden.asd
 #+END_SRC
 
-Tested on SBCL, CCL, ECL, and ABCL on GNU/Linux.
+Tested on SBCL, CCL, ECL, and ABCL on GNU/Linux and MacOS (both on AMD64).
 
 ** License
 
