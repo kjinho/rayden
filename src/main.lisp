@@ -69,7 +69,14 @@ original list."
  (ftype (function (string string &optional boolean) list) string-split))
 (defun string-split (substr mainstr &optional (remove-empty? t))
   "Returns a list of strings that constitute mainstr split
-wherever substr occurs"
+wherever substr occurs. By default, the return list will not
+contain any empty strings. If remove-empty? is nil, the return
+list will contain empty strings.
+
+Examples:
+(string-split \",\" \"1,2,3,\") ;=> (\"1\" \"2\" \"3\")
+(string-split \",\" \"1,2,3,\" nil) ;=> (\"1\" \"2\" \"3\" \"\")
+"
   (when (string= "" substr)
     (error "~S is an invalid substring to split over" substr))
   (loop with l = (length substr)
