@@ -72,3 +72,15 @@
    ;; (signal (length=1 #(nil)))
    ;; (signal (length=1 #(1 2)))
    ;; (signal (length=1 #()))))
+
+(deftest test-string-split
+  (testing
+      "string-split testing"
+    (ok (equal (string-split " " "This is a test")
+               '("This" "is" "a" "test")))
+    (ok (equal (string-split "is" "This is a test")
+               '("Th" " " " a test")))
+    (ok (equal (string-split "test" "")
+               '("")))
+    (ok (signals (string-split "" "This")))
+    (ok (signals (string-split "" "")))))

@@ -1,0 +1,43 @@
+* Rayden
+
+Rayden includes utilities to aid in the writing of Common Lisp code.
+In particular, there are convenience functions and macros (and 
+re-exports) for writing functional code.
+
+The package depends on the public domain [[https://common-lisp.net/project/alexandria/][:alexandria]] and and MIT
+License [[https://github.com/hipeta/arrow-macros/][:arrow-macros]] packages.
+
+** Usage
+
+Install Rayden by saving the repository into your local lisp
+directory, such as ~~/.roswell/local-projects/~, and loading it from
+there. For example, once saved in the local lisp directory, you may
+load it using ~(ql:quickload :rayden)~ or ~(asdf:load-system "rayden")~.
+
+** API
+
+Exports:
+- :drop => removes ~n~ items from head of a list
+- :take => returns a list of the first ~n~ items from the head of a sequence
+- :iota => from ~alexandria~
+- :curry => from ~alexandria~
+- :-> => from ~arrow-macros~
+- :->> => from ~arrow-macros~
+- :as-> => from ~arrow-macros~
+- :len=1 => checks if length of list is one
+- :length=1 => checks if length of sequence is one
+- :string-split => splits string
+
+** Test
+
+After installing rove (~ros install rove~), execute the following command:
+
+#+BEGIN_SRC sh
+rove rayden.asd
+#+END_SRC
+
+Tested on SBCL, CCL, ECL, and ABCL on GNU/Linux.
+
+** License
+
+Released under the MIT-0 License, (c) Jin-Ho King 2021.
