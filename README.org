@@ -1,5 +1,7 @@
 * Rayden
 
+[[https://github.com/kjinho/rayden/actions/workflows/ci.yml][https://github.com/kjinho/rayden/actions/workflows/ci.yml/badge.svg]]
+
 Rayden includes utilities to aid in the writing of Common Lisp code.
 In particular, there are convenience functions and macros (and 
 re-exports) for writing functional code.
