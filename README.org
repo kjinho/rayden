@@ -40,6 +40,19 @@ rove rayden.asd
 
 Tested on SBCL, CCL, ECL, and ABCL on GNU/Linux and MacOS (both on AMD64).
 
+** Benchmarks
+
+*** :len=1, :length=1
+
+#+BEGIN_SRC sh
+ros -Q benchmarks.ros
+#+END_SRC
+
+These (naive) benchmarks, using [[https://shinmera.github.io/trivial-benchmark/][~trivial-benchmarks~]], show that ~:len=1~
+and ~:length=1~ are significantly faster than ~(lambda (x) (= 1 (length
+x)))~ on CCL, ECL, and ABCL for (long) lists. There is little (or no)
+advantage to using ~:length=1~ in other circumstances.
+
 ** License
 
 Released under the MIT-0 License, (c) Jin-Ho King 2021.

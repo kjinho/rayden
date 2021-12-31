@@ -66,8 +66,8 @@ original list."
      (= 1 (length seq)))))
 
 (declaim
- (ftype (function (string string) list) string-split))
-(defun string-split (substr mainstr)
+ (ftype (function (string string &optional boolean) list) string-split))
+(defun string-split (substr mainstr &optional (remove-empty? t))
   "Returns a list of strings that constitute mainstr split
 wherever substr occurs"
   (when (string= "" substr)
@@ -75,5 +75,8 @@ wherever substr occurs"
   (loop with l = (length substr)
         for i = 0 then (+ j l)
         as j = (search substr mainstr :start2 i)
-        collect (subseq mainstr i j)
+        for found-substr = (subseq mainstr i j)
+        when (or (string/= "" found-substr)
+                 (not remove-empty?))
+          collect (subseq mainstr i j)
         while j))
