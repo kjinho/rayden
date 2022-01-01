@@ -16,15 +16,15 @@ jobs:
         shell: msys2 {0}
     steps:
       - uses: msys2/setup-msys2@v2
-      - name: Install cUrl
-        run: choco install curl
-      - name: Install sudo
-        run: choco install sudo
-      - name: Install Roswell
-        env:
-          LISP: ${{ matrix.lisp }}
-        run: |
-          curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh
+        with:
+          update: true
+          install: >-
+            base-devel
+            git
+            curl
+            sudo
+            roswell
+      - uses: actions/checkout@v1
       - name: Install Rove
         run: ros install rove
       - name: Run tests
