@@ -32,5 +32,5 @@ jobs:
         run: ros install rove
       - name: Run tests
         run: |
-          PATH="~/.roswell/bin:$PATH"
+          PATH="~/.roswell/lisp/quicklisp/bin:$PATH"
           rove rayden.asd
