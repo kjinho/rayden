@@ -39,6 +39,7 @@ rove rayden.asd
 #+END_SRC
 
 Tested on SBCL, CCL, ECL, and ABCL on GNU/Linux and MacOS (both on AMD64).
+Also tested on SBCL on Windows (on AMD64).
 
 ** Benchmarks
 
