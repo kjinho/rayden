@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        lisp: [sbcl-bin, ccl-bin, ecl, abcl-bin]
+        lisp: [sbcl-bin]
         os: [windows-latest]
 
     defaults:
@@ -16,12 +16,6 @@ jobs:
         shell: msys2 {0}
     steps:
       - uses: msys2/setup-msys2@v2
-        with:
-          update: true
-          install: >-
-            base-devel
-            git
-            curl
       - uses: actions/checkout@v1
       - name: Install Roswell
         env:
