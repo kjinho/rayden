@@ -8,13 +8,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        lisp: [sbcl-bin, ccl-bin, ecl, abcl-bin]
+        lisp: [sbcl-bin]
         os: [windows-latest]
 
     steps:
       - uses: actions/checkout@v1
       - name: Install cUrl
         run: choco install curl
+      - name: Install sudo
+        run: choco install sudo
       - name: Install Roswell
         env:
           LISP: ${{ matrix.lisp }}
