@@ -11,23 +11,23 @@ jobs:
         lisp: [sbcl-bin]
         os: [windows-latest]
 
+    defaults:
+      run:
+        shell: msys2 {0}
     steps:
-      - uses: actions/checkout@v1
+      - uses: msys2/setup-msys2@v2
       - name: Install cUrl
         run: choco install curl
       - name: Install sudo
         run: choco install sudo
       - name: Install Roswell
-        shell: bash
         env:
           LISP: ${{ matrix.lisp }}
         run: |
           curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh
       - name: Install Rove
-        shell: bash
         run: ros install rove
       - name: Run tests
-        shell: bash
         run: |
           PATH="~/.roswell/bin:$PATH"
           rove rayden.asd
