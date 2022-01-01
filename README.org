@@ -53,6 +53,9 @@ and ~:length=1~ are significantly faster than ~(lambda (x) (= 1 (length
 x)))~ on CCL, ECL, and ABCL for (long) lists. There is little (or no)
 advantage to using ~:length=1~ in other circumstances.
 
+~:length=1~ and ~:len=1~ are not faster for long lists in SBCL, likely
+because SBCL optimizes calls to ~length~ or otherwise caches results.
+
 ** License
 
 Released under the MIT-0 License, (c) Jin-Ho King 2021.
