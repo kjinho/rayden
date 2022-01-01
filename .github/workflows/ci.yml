@@ -1,4 +1,4 @@
-name: CI
+name: tests
 env: 
   SYSTEM_FILE: rayden.asd
 on: [push]
