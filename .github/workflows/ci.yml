@@ -1,5 +1,6 @@
 name: CI
-
+env: 
+  SYSTEM_FILE: rayden.asd
 on: [push]
 
 jobs:
@@ -12,7 +13,7 @@ jobs:
         os: [ubuntu-latest, macOS-latest]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Install Roswell
         env:
           LISP: ${{ matrix.lisp }}
@@ -23,7 +24,7 @@ jobs:
       - name: Run tests
         run: |
           PATH="~/.roswell/bin:$PATH"
-          rove rayden.asd
+          rove ${{ env.SYSTEM_FILE }}
   test-windows:
     name: ${{ matrix.lisp }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -37,7 +38,7 @@ jobs:
         shell: msys2 {0}
     steps:
       - uses: msys2/setup-msys2@v2
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Install Roswell
         env:
           LISP: ${{ matrix.lisp }}
@@ -48,4 +49,4 @@ jobs:
       - name: Run tests
         run: |
           PATH="/c/Users/runneradmin/.roswell/lisp/quicklisp/bin/:$PATH"
-          rove rayden.asd
+          rove ${{ env.SYSTEM_FILE }}
