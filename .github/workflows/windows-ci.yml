@@ -18,13 +18,16 @@ jobs:
       - name: Install sudo
         run: choco install sudo
       - name: Install Roswell
+        shell: bash
         env:
           LISP: ${{ matrix.lisp }}
         run: |
           curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh
       - name: Install Rove
+        shell: bash
         run: ros install rove
       - name: Run tests
+        shell: bash
         run: |
           PATH="~/.roswell/bin:$PATH"
           rove rayden.asd
